@@ -1,10 +1,12 @@
 import Coin from "./Coin"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetch_data_request, fetch_data_success, fetch_data_err } from "../asset/redux/action"
 import coinReducer from "../asset/redux/reducer"
+import Loader from './Loader'
 
 const CoinList = () => {
+  const [isLoader, setIsLoader] = useState(true)
 
   const dispatch = useDispatch()
   const data = useSelector(store => store?.coinReducer?.data[0] ?? [])
@@ -13,12 +15,15 @@ const CoinList = () => {
   const fetchCoin = () => {
 
     dispatch(fetch_data_request())
-
+    setIsLoader(true)
     fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false")
       .then((res) => res.json())
-      .then(data => dispatch(fetch_data_success(data)))
+      .then(data => {
+        dispatch(fetch_data_success(data))
+        setIsLoader(false)
+      }
+      )
       .catch(err => dispatch(fetch_data_err(err)))
-
   }
 
   useEffect(() => {
@@ -35,12 +40,12 @@ const CoinList = () => {
         <h4>Market Cap</h4>
         <h4 >24h Price</h4>
       </div>
+
       <ol>
         {
-          coinFilter.isFilter ?
-            coinFilter.item
+          isLoader ?
+            <Loader />
             :
-
             data.map((item) => {
               return (
                 <li key={item.id}>
