@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/coin-market/static/css/main.8d4e4232.chunk.css",
-    "main.js": "/coin-market/static/js/main.932a6419.chunk.js",
-    "main.js.map": "/coin-market/static/js/main.932a6419.chunk.js.map",
+    "main.css": "/coin-market/static/css/main.a1f8396d.chunk.css",
+    "main.js": "/coin-market/static/js/main.917b421a.chunk.js",
+    "main.js.map": "/coin-market/static/js/main.917b421a.chunk.js.map",
     "runtime-main.js": "/coin-market/static/js/runtime-main.54be1d76.js",
     "runtime-main.js.map": "/coin-market/static/js/runtime-main.54be1d76.js.map",
-    "static/js/2.512c69b4.chunk.js": "/coin-market/static/js/2.512c69b4.chunk.js",
-    "static/js/2.512c69b4.chunk.js.map": "/coin-market/static/js/2.512c69b4.chunk.js.map",
+    "static/js/2.420003f2.chunk.js": "/coin-market/static/js/2.420003f2.chunk.js",
+    "static/js/2.420003f2.chunk.js.map": "/coin-market/static/js/2.420003f2.chunk.js.map",
     "static/js/3.64b24306.chunk.js": "/coin-market/static/js/3.64b24306.chunk.js",
     "static/js/3.64b24306.chunk.js.map": "/coin-market/static/js/3.64b24306.chunk.js.map",
     "index.html": "/coin-market/index.html",
-    "static/css/main.8d4e4232.chunk.css.map": "/coin-market/static/css/main.8d4e4232.chunk.css.map",
-    "static/js/2.512c69b4.chunk.js.LICENSE.txt": "/coin-market/static/js/2.512c69b4.chunk.js.LICENSE.txt"
+    "static/css/main.a1f8396d.chunk.css.map": "/coin-market/static/css/main.a1f8396d.chunk.css.map",
+    "static/js/2.420003f2.chunk.js.LICENSE.txt": "/coin-market/static/js/2.420003f2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.54be1d76.js",
-    "static/js/2.512c69b4.chunk.js",
-    "static/css/main.8d4e4232.chunk.css",
-    "static/js/main.932a6419.chunk.js"
+    "static/js/2.420003f2.chunk.js",
+    "static/css/main.a1f8396d.chunk.css",
+    "static/js/main.917b421a.chunk.js"
   ]
 }
