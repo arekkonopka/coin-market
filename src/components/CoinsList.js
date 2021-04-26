@@ -7,14 +7,14 @@ import coinReducer from "../asset/redux/reducer"
 const CoinList = () => {
 
   const dispatch = useDispatch()
-  const data = useSelector(store => store.coinReducer.data)
+  const data = useSelector(store => store?.coinReducer?.data[0] ?? [])
   const coinFilter = useSelector(store => store.filterReducer)
 
-  const fetchCoin = async () => {
+  const fetchCoin = () => {
 
     dispatch(fetch_data_request())
 
-    await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false")
+    fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false")
       .then((res) => res.json())
       .then(data => dispatch(fetch_data_success(data)))
       .catch(err => dispatch(fetch_data_err(err)))
@@ -25,6 +25,7 @@ const CoinList = () => {
     fetchCoin()
   }, [])
 
+  console.log("data", data)
   return (
     <div>
       <div className='describe'>
@@ -36,16 +37,16 @@ const CoinList = () => {
       </div>
       <ol>
         {
-          // coinFilter.isFilter ?
-          //   coinFilter.item
-          //   :
+          coinFilter.isFilter ?
+            coinFilter.item
+            :
 
-          data[0].map((item) => {
-            return (
-              <li key={item.id}>
-                <Coin name={item.name} symbol={item.symbol} currentPrice={item.current_price} marketCap={item.market_cap} price_change_percentage_24h={item.price_change_percentage_24h} />
-              </li>)
-          })
+            data.map((item) => {
+              return (
+                <li key={item.id}>
+                  <Coin name={item.name} symbol={item.symbol} currentPrice={item.current_price} marketCap={item.market_cap} price_change_percentage_24h={item.price_change_percentage_24h} />
+                </li>)
+            })
         }
       </ol>
     </div>
