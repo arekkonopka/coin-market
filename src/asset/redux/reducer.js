@@ -23,5 +23,4 @@ const coinReducer = (state = initState, action) => {
 }
 
 
-
 export default coinReducer

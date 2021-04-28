@@ -2,15 +2,15 @@ import Coin from "./Coin"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetch_data_request, fetch_data_success, fetch_data_err } from "../asset/redux/action"
-import coinReducer from "../asset/redux/reducer"
+import { searchList } from '../asset/redux/searchBar/action'
 import Loader from './Loader'
 
 const CoinList = () => {
   const [isLoader, setIsLoader] = useState(true)
 
   const dispatch = useDispatch()
-  const data = useSelector(store => store?.coinReducer?.data[0] ?? [])
-  const coinFilter = useSelector(store => store.filterReducer)
+  const searchList = useSelector(store => store?.searchBarReducer.searchList[0][0] ?? [])
+
 
   const fetchCoin = () => {
 
@@ -25,12 +25,10 @@ const CoinList = () => {
       )
       .catch(err => dispatch(fetch_data_err(err)))
   }
-
   useEffect(() => {
     fetchCoin()
   }, [])
 
-  console.log("data", data)
   return (
     <div>
       <div className='describe'>
@@ -46,7 +44,8 @@ const CoinList = () => {
           isLoader ?
             <Loader />
             :
-            data.map((item) => {
+
+            searchList.map((item) => {
               return (
                 <li key={item.id}>
                   <Coin name={item.name} symbol={item.symbol} currentPrice={item.current_price} marketCap={item.market_cap} price_change_percentage_24h={item.price_change_percentage_24h} />
