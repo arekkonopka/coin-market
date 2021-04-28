@@ -2,15 +2,20 @@ import Coin from "./Coin"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetch_data_request, fetch_data_success, fetch_data_err } from "../asset/redux/action"
-import { searchList } from '../asset/redux/searchBar/action'
 import Loader from './Loader'
 
 const CoinList = () => {
   const [isLoader, setIsLoader] = useState(true)
 
   const dispatch = useDispatch()
-  const searchList = useSelector(store => store?.searchBarReducer.searchList[0][0] ?? [])
-
+  const searchList = useSelector(store => {
+    if (store.searchBarReducer.searchList[0] !== undefined) {
+      return store.searchBarReducer.searchList[0][0]
+    } else {
+      return []
+    }
+  })
+  // store?.searchBarReducer?.searchList[0][0] ?? []
 
   const fetchCoin = () => {
 
